@@ -1,0 +1,18 @@
+.container {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	gap: 40px;
+	width: 100%;
+}
+
+.priceContainer {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.icon {
+	width: 33px;
+	height: 33px;
+}

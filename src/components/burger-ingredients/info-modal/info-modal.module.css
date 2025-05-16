@@ -1,0 +1,41 @@
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.header {
+	margin: 0;
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 1.1;
+}
+
+.name {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 1.25;
+}
+
+.nutritions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.nutrition {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.nutrition_title,
+.nutrition_value {
+	color: var(--text-inactive-color);
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.5;
+	text-align: center;
+}
