@@ -8,12 +8,12 @@ import { useCallback, useEffect, useState } from 'react';
 
 type BurgerIngredientItemProps = {
 	item: TIngredient;
-	onDoubleClick: (item: TIngredient) => void;
+	onItemClick: (item: TIngredient) => void;
 };
 
 export const BurgerIngredientItem = ({
 	item,
-	onDoubleClick,
+	onItemClick,
 }: BurgerIngredientItemProps): React.JSX.Element => {
 	const [isSelected, setIsSelected] = useState(false);
 
@@ -43,7 +43,9 @@ export const BurgerIngredientItem = ({
 
 		currentIds.includes(item._id) ? removeId() : setId();
 		window.dispatchEvent(new Event('ingredientListUpdated'));
-	}, [item._id]);
+
+		onItemClick(item);
+	}, [item._id, onItemClick]);
 
 	const getCurrentIds = () => {
 		const stored = localStorage.getItem('selectedIngredientIds');
@@ -54,9 +56,8 @@ export const BurgerIngredientItem = ({
 		<div
 			role='button'
 			tabIndex={0}
-			onClick={handleClick}
 			className={`${styles.ingredientItem} `}
-			onDoubleClick={() => onDoubleClick(item)}
+			onClick={handleClick}
 			onKeyDown={(e) => {
 				if (e.key === 'Enter' || e.key === ' ') {
 					e.preventDefault();

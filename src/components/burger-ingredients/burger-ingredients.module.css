@@ -3,22 +3,15 @@
 	flex-direction: column;
 }
 
-.burgerIngredients {
+.burger_ingredients {
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
 }
 
-h3 {
-	margin: 40px 0 24px;
+.modal_header {
+	margin: 0;
 	font-weight: 700;
 	font-size: 36px;
 	line-height: 1.1;
-}
-
-.ingredientsContainer {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 24px 32px;
-	padding: 24px 16px 0;
 }

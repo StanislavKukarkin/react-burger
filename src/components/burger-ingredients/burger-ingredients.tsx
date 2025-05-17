@@ -2,17 +2,13 @@ import React, { useMemo, useState } from 'react';
 import { TIngredient, TIngredientType } from '@utils/types.ts';
 import { TabPanel } from './tab-panel/tab-panel';
 import styles from './burger-ingredients.module.css';
-import { BurgerIngredientItem } from './burger-igredient-item/burger-ingredient-item';
-import { InfoModal } from './info-modal/info-modal';
+import { BurgerIngredientsSegment } from './burger-ingridients-segment/burger-ingredients-segment';
+import { GroupedIngredients } from '@/interfaces/ingrediensts';
+import { Modal } from '../ui/modal/modal';
+import { IngredientInfo } from './ingredient-info/ingredient-info';
 
 type TBurgerIngredientsProps = {
 	ingredients: TIngredient[];
-};
-
-type GroupedIngredients = {
-	bun: TIngredient[];
-	sauce: TIngredient[];
-	main: TIngredient[];
 };
 
 export const BurgerIngredients = ({
@@ -51,44 +47,31 @@ export const BurgerIngredients = ({
 		<>
 			<div className={`${styles.wrapper} pb-10 pt-10`}>
 				<TabPanel activeType={activeType} setActiveType={setActiveType} />
-				<div className={styles.burgerIngredients}>
-					<h3>Булки</h3>
-					<article className={styles.ingredientsContainer}>
-						{groupedIngredients.bun.map((item) => (
-							<BurgerIngredientItem
-								key={item._id}
-								item={item}
-								onDoubleClick={() => handleShow(item)}></BurgerIngredientItem>
-						))}
-					</article>
-
-					<h3>Начинки</h3>
-					<article className={styles.ingredientsContainer}>
-						{groupedIngredients.main.map((item) => (
-							<BurgerIngredientItem
-								key={item._id}
-								item={item}
-								onDoubleClick={() => handleShow(item)}></BurgerIngredientItem>
-						))}
-					</article>
-
-					<h3>Соусы</h3>
-					<article className={styles.ingredientsContainer}>
-						{groupedIngredients.sauce.map((item) => (
-							<BurgerIngredientItem
-								key={item._id}
-								item={item}
-								onDoubleClick={() => handleShow(item)}></BurgerIngredientItem>
-						))}
-					</article>
+				<div className={styles.burger_ingredients}>
+					<BurgerIngredientsSegment
+						ingredients={groupedIngredients.bun}
+						title='Булки'
+						onItemClick={handleShow}
+					/>
+					<BurgerIngredientsSegment
+						ingredients={groupedIngredients.main}
+						title='Начинки'
+						onItemClick={handleShow}
+					/>
+					<BurgerIngredientsSegment
+						ingredients={groupedIngredients.sauce}
+						title='Соусы'
+						onItemClick={handleShow}
+					/>
 				</div>
 			</div>
 			{selectedItem && (
-				<InfoModal
-					item={selectedItem}
+				<Modal
+					header={<h3 className={styles.modal_header}>Детали ингредиента</h3>}
 					isOpen={isModalOpen}
-					onClose={handleClose}
-				/>
+					onClose={handleClose}>
+					<IngredientInfo item={selectedItem} />
+				</Modal>
 			)}
 		</>
 	);
