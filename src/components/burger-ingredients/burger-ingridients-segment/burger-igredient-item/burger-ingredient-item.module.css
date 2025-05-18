@@ -1,0 +1,61 @@
+.ingredientItem {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+
+	&:hover {
+		background-color: rgb(102 51 153 / 10%);
+		cursor: pointer;
+	}
+}
+
+.badge {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.name,
+.price {
+	color: var(--text-primary-color);
+	text-align: center;
+}
+
+.name {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.priceContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.price {
+	font-weight: 400;
+	font-size: 28px;
+}
+
+.visible {
+	transform: scale(1);
+	opacity: 1;
+	transition:
+		opacity 0.3s ease 0.2s,
+		transform 0.3s ease 0.2s;
+	pointer-events: auto;
+}
+
+.hidden {
+	transform: scale(0.8);
+	opacity: 0;
+	transition:
+		opacity 0.3s ease 0.2s,
+		transform 0.3s ease 0.2s;
+	pointer-events: none;
+}
