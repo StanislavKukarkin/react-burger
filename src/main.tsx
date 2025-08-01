@@ -8,7 +8,7 @@ import { store } from './services/store';
 
 createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<BrowserRouter>
+		<BrowserRouter basename='/react-burger'>
 			<Provider store={store}>
 				<App />
 			</Provider>
